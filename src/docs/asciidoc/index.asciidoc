@@ -1,0 +1,36 @@
+= Sample API Documentation
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 3
+:sectlinks:
+
+== 게시글 작성
+
+=== 요청
+
+include::{snippets}/post-create/http-request.adoc[]
+include::{snippets}/post-create/curl-request.adoc[]
+include::{snippets}/post-create/request-fields.adoc[]
+
+
+=== 응답
+
+include::{snippets}/post-create/http-response.adoc[]
+include::{snippets}/post-create/response-fields.adoc[]
+
+
+== 게시글 단건 조회
+
+=== 요청
+
+include::{snippets}/post-inquiry/http-request.adoc[]
+include::{snippets}/post-inquiry/curl-request.adoc[]
+
+
+=== 응답
+
+include::{snippets}/post-inquiry/http-response.adoc[]
+include::{snippets}/post-inquiry/response-fields.adoc[]
+
