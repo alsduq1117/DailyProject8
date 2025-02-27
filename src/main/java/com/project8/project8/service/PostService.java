@@ -10,6 +10,9 @@ import com.project8.project8.request.PostSearch;
 import com.project8.project8.response.PagingResponse;
 import com.project8.project8.response.PostResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,9 +36,9 @@ public class PostService {
         return PostResponse.from(post);
     }
 
+    @Cacheable(value = "postCache", key = "#postId")
     public PostResponse get(Long postId) {
         Post post = postRepository.findById(postId).orElseThrow(PostNotFound::new);
-
         return PostResponse.from(post);
     }
 
@@ -46,6 +49,7 @@ public class PostService {
     }
 
     @Transactional
+    @CachePut(value = "postCache" , key = "#postId")
     public PostResponse edit(Long postId, PostEdit postEdit) {
         Post post = postRepository.findById(postId).orElseThrow(PostNotFound::new);
 
@@ -62,6 +66,7 @@ public class PostService {
 
 
     @Transactional
+    @CacheEvict(value = "postCache" , key = "#postId")
     public void delete(Long postId) {
         Post post = postRepository.findById(postId).orElseThrow(PostNotFound::new);
         postRepository.delete(post);
