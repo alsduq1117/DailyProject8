@@ -9,6 +9,7 @@ import com.project8.project8.request.PostEdit;
 import com.project8.project8.request.PostSearch;
 import com.project8.project8.response.PagingResponse;
 import com.project8.project8.response.PostResponse;
+import jakarta.transaction.TransactionScoped;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
